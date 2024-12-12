@@ -1,11 +1,15 @@
 services:
-    whoami:
-        container_name: "whoami"
-        image: "containous/whoami"
-        platform: linux/amd64
-    frankenphp:
-        container_name: "frankenphp"
-        image: "ghcr.io/thecaliskan/laravel-benchmark:frankenphp"
-        ports:
-            - "9804:9804"
-        platform: linux/amd64
+  whoami:
+    container_name: "whoami"
+    image: "containous/whoami"
+    platform: linux/amd64
+
+  frankenphp:
+    build:
+      context: .
+      dockerfile: ./docker/frankenphp.Dockerfile  # Correct indentation and key name
+    container_name: "frankenphp"
+    image: "ghcr.io/thecaliskan/laravel-benchmark:frankenphp"
+    ports:
+      - "9804:9804"
+    platform: linux/amd64
